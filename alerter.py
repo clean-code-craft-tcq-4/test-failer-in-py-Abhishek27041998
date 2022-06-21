@@ -1,3 +1,4 @@
+from test_alerter import network_alert_stub
 alert_failure_count = 0
 
 
@@ -14,9 +15,9 @@ def network_alert(celcius):
 
 # Passing "network_alert" function to the following makes it
 # easy for testing stub along with production code
-def alert_in_celcius(farenheit, network_alert):
+def alert_in_celcius(farenheit, fun_network_alert):
     celcius = (farenheit - 32) * 5 / 9
-    returnCode = network_alert(celcius)
+    returnCode = fun_network_alert(celcius)
     if returnCode != 200:
         # non-ok response is not an error! Issues happen in life!
         # let us keep a count of failures to report
@@ -26,3 +27,8 @@ def alert_in_celcius(farenheit, network_alert):
         alert_failure_count += 0
 
 
+alert_in_celcius(400.5, network_alert_stub)  # Passing the stub function for testing
+alert_in_celcius(303.6, network_alert_stub)
+assert alert_failure_count == 2
+print(f'{alert_failure_count} alerts failed.')
+print('All is well (maybe!)')
