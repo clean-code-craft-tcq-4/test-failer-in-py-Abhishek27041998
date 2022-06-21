@@ -10,11 +10,12 @@ def print_color_map():
 
 
 def formatter(num, major, minor):
-    s = "{:<3}| {:<10}| {:<10}".format(str(num), major, minor)
+    s = f'{num} | {major} | {minor}'
     return s
 
 
 result = print_color_map()
 assert(result == 25)
-assert(formatter(1, 'White', 'Orange').find("|") == 3)
+assert(formatter(10, 'White', 'Orange').find("|") == 2)
+
 print("All is well (maybe!)\n")
