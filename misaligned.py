@@ -21,6 +21,6 @@ def formatter(num, major, minor):
 
 result = print_color_map()
 assert(result == 25)
-assert(formatter(10, 'White', 'Orange').find("|") == 2)
+assert(formatter(10, 'Black', 'Blue').find("|") == 2)
 assert(generate_next_number(0, 0) == 1)  # First number is 1 but this implementation returns 0
 print("All is well (maybe!)\n")
